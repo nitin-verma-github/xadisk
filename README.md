@@ -10,3 +10,6 @@ XADisk supports both normal and distributed (XA) transactions, can recover from 
     XADisk Rar - Fully JCA compliant and deploys over any JavaEE Server. 
     
    
+Discussion Forum:
+https://groups.google.com/group/xadisk
+
