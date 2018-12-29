@@ -1,0 +1,35 @@
+Release Notes for XADisk 1.2.2.
+
+This document contains the release notes for XADisk 1.2.2 (http://xadisk.java.net/).
+
+Please consult the User Guide, JavaDoc and Example Codes for XADisk 1.2.2 for learning and applying XADisk. The project website
+at http://xadisk.java.net/ contains links to these resources.
+
+If you have any questions, please feel free to write to go.xadisk@java.net.
+
+The following is the list of bugs/enhancements/features which are implemented in this release, after the 1.2.1 release.
+
+_______________________________________________________________________________________________________________________________________________
+_______________________________________________________________________________________________________________________________________________
+
+
+XADISK-76 	Moving a file with xADiskConnection.moveFile(...) gets stuck if java.io.File.rename() fails
+XADISK-98 	Safe close FileInput/OutputStreams
+XADISK-115 	JBoss 7.1 expects #run() and #release to be explicitly declared
+XADISK-116 	Using XAFileInputStream.read(byte[]...) throws ClassCastException when using remote invocation to XADisk.
+XADISK-118 	NullPonterExcepton when listing file
+XADISK-121 	moveFile fails with java.lang.AssertionError
+XADISK-122 	NullPointerException on transaction completion when timeout has been detected
+XADISK-123 	FileNotFoundException if file is stored on a NFS-Server different to the xaDiskHome (XADiskSystemDirectory)
+XADISK-124 	Performance in invoking methods of remote instances
+XADISK-125 	ConcurrentModificationException over txnBuffers in class GatheringDiskWriter
+XADISK-128 	NativeXAFileInputStream skip method throws an unexpected IllegalArgumentException with message "New position cannot be negative or more than file size"
+XADISK-131 	xadisk should not allow creation of sessions after it has been shutdown
+XADISK-132 	XADisk hangs on commit after directory delete and recreate
+XADISK-133 	time-out on long transaction gives no indication in ClosedStreamException
+XADISK-140 	Resource leak in XADisk NIO TCP Server
+XADISK-141 	In GatheringDiskWriter, method writeRemainingBuffersNow should wait for processEvent to complete.
+XADISK-142 	close() method should be called on the corresponding stream instead of the FileChannel.
+
+_______________________________________________________________________________________________________________________________________________
+_______________________________________________________________________________________________________________________________________________
