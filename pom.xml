@@ -1,0 +1,110 @@
+<!--
+Many Thanks to Christoph Beck for his advice and support for mavenizing XADisk project.
+
+To run maven with this file, you would need:
+1) the source of XADisk, i.e. the "src" directory, inside the current working directory (from where you will run maven).
+
+To build .jar and .rar, give the following command:
+mvn package
+
+Contributor : Christoph Beck
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>java.net.xadisk</groupId>
+    <artifactId>xadisk</artifactId>
+    <version>SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>XADisk</name>
+    <description>Transactional Wrapper for File Systems</description>
+	
+    <repositories>
+        <repository>
+            <id>java-dev-repository</id>
+            <name>Maven 1.x java.dev Snapshot Repository</name>
+            <layout>legacy</layout>
+            <url>http://download.java.net/maven/1/</url>
+        </repository>
+        <repository>
+            <id>maven2-repository.java.net</id>
+            <name>Java.net Repository for Maven</name>
+            <url>http://download.java.net/maven/2</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>javax.resource</groupId>
+            <artifactId>connector-api</artifactId>
+            <version>1.5</version>
+            <scope>provided</scope>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>javaee</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>5</version>
+            <scope>provided</scope>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                    <excludes>
+                        <exclude>org/xadisk/tests/**/*.*</exclude>
+                        <exclude>org/xadisk/examples/**/*.*</exclude>
+						<exclude>org/xadisk/terminal/**/*.*</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-rar-plugin</artifactId>
+                <configuration>
+                    <includeJar>true</includeJar>
+                    <raXmlFile>src/META-INF/ra.xml</raXmlFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>rar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <sourceDirectory>src</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+					<exclude>org/xadisk/tests/**/*.*</exclude>
+					<exclude>org/xadisk/examples/**/*.*</exclude>
+					<exclude>org/xadisk/terminal/**/*.*</exclude>
+                </excludes>
+            </resource>
+        </resources>
+		<!--<testSourceDirectory>test</testSourceDirectory>
+		<testResources>
+			<testResource>
+				<directory>test</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</testResource>
+		</testResources>
+		-->
+    </build>
+</project>
